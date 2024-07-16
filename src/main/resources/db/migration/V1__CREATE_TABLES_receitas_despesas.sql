@@ -1,0 +1,16 @@
+CREATE TABLE receitas(
+    id BIGINT(20) NOT NULL UNIQUE AUTO_INCREMENT,
+    descricao VARCHAR(30) NOT NULL,
+    valor DOUBLE NOT NULL,
+    data DATE NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE despesas(
+    id BIGINT(20) NOT NULL UNIQUE AUTO_INCREMENT,
+    descricao VARCHAR(30) NOT NULL,
+    valor DOUBLE NOT NULL,
+    data DATE NOT NULL,
+    PRIMARY KEY(id)
+);
+
