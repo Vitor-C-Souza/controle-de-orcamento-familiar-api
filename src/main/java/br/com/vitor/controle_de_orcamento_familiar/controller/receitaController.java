@@ -30,8 +30,8 @@ public class receitaController {
     }
 
     @GetMapping
-    public Page<receitaDTOResponse> listarReceitas(@PageableDefault Pageable paginacao){
-        return service.listarReceitas(paginacao);
+    public Page<receitaDTOResponse> listarReceitas(@PageableDefault Pageable paginacao, @RequestParam(value = "descricao", defaultValue = "", required = false) String descricao){
+        return service.listarReceitas(paginacao, descricao);
     }
 
     @GetMapping("/{id}")

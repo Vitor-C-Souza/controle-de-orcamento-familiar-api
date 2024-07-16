@@ -30,8 +30,8 @@ public class receitaService {
         return new receitaDTOResponse(receita);
     }
 
-    public Page<receitaDTOResponse> listarReceitas(Pageable paginacao) {
-        Page<Receita> receitas = repository.findAll(paginacao);
+    public Page<receitaDTOResponse> listarReceitas(Pageable paginacao, String descricao) {
+        Page<Receita> receitas = repository.findAllByDescricao(paginacao, descricao);
         return receitas.map(receitaDTOResponse::new);
     }
 

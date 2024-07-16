@@ -1,5 +1,6 @@
 package br.com.vitor.controle_de_orcamento_familiar.dto;
 
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
@@ -9,6 +10,7 @@ public record despesaDTORequest(
         @Positive(message = "Valor deve ser positivo")
         double valor,
         @NotBlank(message = "Data não pode ser vazia")
-        String data
+        String data,
+        String categoria
 ) {
 }

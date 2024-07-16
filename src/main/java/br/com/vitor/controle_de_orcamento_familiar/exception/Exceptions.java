@@ -26,4 +26,9 @@ public class Exceptions {
     public ResponseEntity despesaNotFound(){
         return ResponseEntity.notFound().build();
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity categoriaInvalida(IllegalArgumentException exception){
+        return ResponseEntity.badRequest().body(exception.getMessage());
+    }
 }

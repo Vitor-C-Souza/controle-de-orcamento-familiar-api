@@ -30,8 +30,8 @@ public class despesaController {
     }
 
     @GetMapping
-    public Page<despesaDTOResponse> listarDespesas(@PageableDefault Pageable paginacao){
-        return service.listarDespesas(paginacao);
+    public Page<despesaDTOResponse> listarDespesas(@PageableDefault Pageable paginacao, @RequestParam(value = "descricao", defaultValue = "", required = false) String descricao){
+        return service.listarDespesas(paginacao, descricao);
     }
 
     @GetMapping("/{id}")

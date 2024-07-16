@@ -21,7 +21,6 @@ public class despesaService {
 
     public despesaDTOResponse cadastrarDespesa(despesaDTORequest dto) {
         Despesa despesa = new Despesa(dto);
-
         boolean exists = repository.existsByDescricaoAndMonth(despesa.getDescricao(), despesa.getData().getMonthValue());
         if (exists) {
             throw new equalDespesaException("Não pode ter despesas iguais no mesmo mês");
@@ -31,8 +30,8 @@ public class despesaService {
         return new despesaDTOResponse(despesa);
     }
 
-    public Page<despesaDTOResponse> listarDespesas(Pageable paginacao) {
-        Page<Despesa> despesas = repository.findAll(paginacao);
+    public Page<despesaDTOResponse> listarDespesas(Pageable paginacao, String descricao) {
+        Page<Despesa> despesas = repository.findAllByDescricao(paginacao, descricao);
         return despesas.map(despesaDTOResponse::new);
     }
 
