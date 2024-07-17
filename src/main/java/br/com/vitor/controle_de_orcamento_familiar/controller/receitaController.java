@@ -52,4 +52,10 @@ public class receitaController {
         service.deletarReceita(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{ano}/{mes}")
+    public Page<receitaDTOResponse> listarReceitasPorMes(@PathVariable int ano, @PathVariable int mes, @PageableDefault Pageable paginacao){
+        Page<receitaDTOResponse> dtoResponses = service.listarReceitasPorMes(paginacao, ano, mes);
+        return dtoResponses;
+    }
 }

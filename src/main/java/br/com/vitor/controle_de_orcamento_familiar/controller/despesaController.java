@@ -52,4 +52,9 @@ public class despesaController {
         service.deletarDespesa(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{ano}/{mes}")
+    public Page<despesaDTOResponse> listarDespesasPorMes(@PathVariable int ano, @PathVariable int mes, @PageableDefault Pageable paginacao){
+        return service.listarDespesasPorMes(paginacao, ano, mes);
+    }
 }

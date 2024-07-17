@@ -21,7 +21,7 @@ public class receitaService {
     public receitaDTOResponse cadastrarReceita(receitaDTORequest dto) {
         Receita receita = new Receita(dto);
 
-        boolean exists = repository.existsByDescricaoAndMonth(receita.getDescricao(), receita.getData().getMonthValue());
+        boolean exists = repository.existsByDescricaoAndMonth(receita.getDescricao(), receita.getData().getMonthValue(), receita.getData().getYear());
         if (exists) {
             throw new equalReceitaException("Não pode ter receitas iguais no mesmo mês");
         }
@@ -51,7 +51,7 @@ public class receitaService {
         Receita receita = repository.getReferenceById(id);
         receita.update(dto);
 
-        boolean exists = repository.existsByDescricaoAndMonth(receita.getDescricao(), receita.getData().getMonthValue());
+        boolean exists = repository.existsByDescricaoAndMonth(receita.getDescricao(), receita.getData().getMonthValue(), receita.getData().getYear());
         if (exists) {
             throw new equalReceitaException("Não pode ter receitas iguais no mesmo mês");
         }
@@ -62,5 +62,11 @@ public class receitaService {
 
     public void deletarReceita(Long id) {
         repository.deleteById(id);
+    }
+
+    public Page<receitaDTOResponse> listarReceitasPorMes(Pageable paginacao, int ano, int mes) {
+        Page<Receita> receitas = repository.listarReceitasPorMes(paginacao, ano, mes);
+
+        return receitas.map(receitaDTOResponse::new);
     }
 }

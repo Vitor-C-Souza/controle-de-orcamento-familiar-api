@@ -21,7 +21,8 @@ public class despesaService {
 
     public despesaDTOResponse cadastrarDespesa(despesaDTORequest dto) {
         Despesa despesa = new Despesa(dto);
-        boolean exists = repository.existsByDescricaoAndMonth(despesa.getDescricao(), despesa.getData().getMonthValue());
+
+        boolean exists = repository.existsByDescricaoAndMonthAndYear(despesa.getDescricao(), despesa.getData().getMonthValue(), despesa.getData().getYear());
         if (exists) {
             throw new equalDespesaException("Não pode ter despesas iguais no mesmo mês");
         }
@@ -48,7 +49,7 @@ public class despesaService {
         Despesa despesa = repository.getReferenceById(id);
         despesa.update(dto);
 
-        boolean exists = repository.existsByDescricaoAndMonth(despesa.getDescricao(), despesa.getData().getMonthValue());
+        boolean exists = repository.existsByDescricaoAndMonthAndYear(despesa.getDescricao(), despesa.getData().getMonthValue(), despesa.getData().getYear());
         if (exists) {
             throw new equalDespesaException("Não pode ter despesas iguais no mesmo mês");
         }
@@ -59,5 +60,11 @@ public class despesaService {
 
     public void deletarDespesa(Long id) {
         repository.deleteById(id);
+    }
+
+    public Page<despesaDTOResponse> listarDespesasPorMes(Pageable paginacao, int ano, int mes) {
+        Page<Despesa> despesa = repository.listarDespesasPorMes(paginacao, ano, mes);
+
+        return despesa.map(despesaDTOResponse::new);
     }
 }
