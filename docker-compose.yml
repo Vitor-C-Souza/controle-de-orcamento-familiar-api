@@ -16,13 +16,13 @@ services:
     ports:
       - "3306:3306"
     volumes:
-        - controle-de-orcamento-data:/var/lib/mysql
+      - controle-de-orcamento-data:/var/lib/mysql
 
   spring:
     depends_on:
       mysql:
         condition: service_healthy
-    image: makinay/controle-de-orcamento-familiar:1.1
+    image: makinay/controle-de-orcamento-familiar:3.1
     container_name: API
     restart: on-failure
     networks:
