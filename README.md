@@ -49,16 +49,11 @@ Para iniciar o servidor execute o seguinte na raiz do projeto
     mvn package
     java -jar target/*.jar
    ```
-   
-3. Ou se preferir pode usar a api que esta hospedada na aws e usando as rotas do springdoc para testar.
-Rota na aws para o springdoc: `http://ec2-44-202-56-186.compute-1.amazonaws.com/swagger-ui/index.html#/`
-
 
 ## Testes
 
 Se acessar a rota localmente no seu navegador tera uma explicação de como funciona as rotas da api mais detalhadamente com springdoc.</br>
-Rota localmente: `http://localhost:8080/swagger-ui/index.html#/`</br>
-Rota na aws:     `http://ec2-44-204-30-221.compute-1.amazonaws.com/swagger-ui/index.html#/` 
+Rota localmente: `http://localhost:8080/swagger-ui/index.html#/`
 
 ## Contribuição
 
