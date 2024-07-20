@@ -21,12 +21,14 @@ Uma API RESTful contruída em Java para o controle de orçamento familiar, onde 
 - Lombok
 - SpringDoc
 - Validation
+- nginx
 
 ## Instalação
 ### Pré-requisitos
 - Java 17+
 - maven
 - docker (opcional)
+- docker-compose (opcional)
 - mysql (opcional se não tiver docker instalado)
 
 ### Passos
@@ -49,6 +51,7 @@ Para iniciar o servidor execute o seguinte na raiz do projeto
    ```
    
 3. Ou se preferir pode usar a api que esta hospedada na aws e usando as rotas do springdoc para testar.
+Rota na aws para o springdoc: `http://ec2-44-202-56-186.compute-1.amazonaws.com/swagger-ui/index.html#/`
 
 
 ## Testes
